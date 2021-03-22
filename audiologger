@@ -1,0 +1,383 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local AudioLogger = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local XPBackground = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
+local Minimize = Instance.new("ImageButton")
+local Close = Instance.new("ImageButton")
+local Maximize = Instance.new("ImageButton")
+local LoggedAudios = Instance.new("ScrollingFrame")
+local UIListLayout = Instance.new("UIListLayout")
+local logsbtn = Instance.new("TextButton")
+local LogToolBG = Instance.new("ImageLabel")
+local DragFrame = Instance.new("Frame")
+
+--Properties:
+
+AudioLogger.Name = "AudioLogger"
+AudioLogger.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+AudioLogger.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = AudioLogger
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundTransparency = 1.000
+MainFrame.Position = UDim2.new(0.319705635, 0, 0.349260449, 0)
+MainFrame.Size = UDim2.new(0, 191, 0, 296)
+
+XPBackground.Name = "XPBackground"
+XPBackground.Parent = MainFrame
+XPBackground.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XPBackground.BackgroundTransparency = 1.000
+XPBackground.Position = UDim2.new(-0.00523576187, 0, 0, 0)
+XPBackground.Size = UDim2.new(1.28705347, 0, 1.23986518, 0)
+XPBackground.Image = "http://www.roblox.com/asset/?id=5838849817"
+XPBackground.ScaleType = Enum.ScaleType.Slice
+XPBackground.SliceCenter = Rect.new(7, 33, 7, 33)
+
+Title.Name = "Title"
+Title.Parent = XPBackground
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.0244073886, 0, 0, 0)
+Title.Size = UDim2.new(0, 164, 0, 31)
+Title.ZIndex = 2
+Title.Font = Enum.Font.Arcade
+Title.Text = "audios.exe"
+Title.TextColor3 = Color3.fromRGB(209, 209, 209)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+Minimize.Name = "Minimize"
+Minimize.Parent = XPBackground
+Minimize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Minimize.BackgroundTransparency = 1.000
+Minimize.Position = UDim2.new(0.70758462, 0, 0, 0)
+Minimize.Size = UDim2.new(0, 23, 0, 31)
+Minimize.ZIndex = 15
+Minimize.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+Minimize.ImageTransparency = 1.000
+
+Close.Name = "Close"
+Close.Parent = XPBackground
+Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Close.BackgroundTransparency = 1.000
+Close.Position = UDim2.new(0.887177289, 0, 0, 0)
+Close.Size = UDim2.new(0, 27, 0, 31)
+Close.ZIndex = 15
+Close.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+Close.ImageTransparency = 1.000
+
+Maximize.Name = "Maximize"
+Maximize.Parent = XPBackground
+Maximize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Maximize.BackgroundTransparency = 1.000
+Maximize.Position = UDim2.new(0.803367436, 0, 0, 0)
+Maximize.Size = UDim2.new(0, 20, 0, 31)
+Maximize.ZIndex = 15
+Maximize.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+Maximize.ImageTransparency = 1.000
+
+LoggedAudios.Name = "LoggedAudios"
+LoggedAudios.Parent = MainFrame
+LoggedAudios.Active = true
+LoggedAudios.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LoggedAudios.BackgroundTransparency = 1.000
+LoggedAudios.BorderSizePixel = 0
+LoggedAudios.Position = UDim2.new(0.031413611, 0, 0.274177969, 0)
+LoggedAudios.Size = UDim2.new(0, 233, 0, 285)
+LoggedAudios.BottomImage = ""
+LoggedAudios.CanvasSize = UDim2.new(0, 0, 4, 0)
+LoggedAudios.MidImage = "rbxassetid://6536476069"
+LoggedAudios.ScrollBarThickness = 20
+LoggedAudios.TopImage = ""
+
+UIListLayout.Parent = LoggedAudios
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0.00999999978, 0)
+
+logsbtn.Name = "logsbtn"
+logsbtn.Parent = MainFrame
+logsbtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+logsbtn.BackgroundTransparency = 1.000
+logsbtn.Position = UDim2.new(0.17459698, 0, 0.128907695, 0)
+logsbtn.Size = UDim2.new(0, 176, 0, 36)
+logsbtn.ZIndex = 2
+logsbtn.Font = Enum.Font.Arcade
+logsbtn.Text = "Start Up"
+logsbtn.TextColor3 = Color3.fromRGB(139, 139, 139)
+logsbtn.TextScaled = true
+logsbtn.TextSize = 14.000
+logsbtn.TextWrapped = true
+
+LogToolBG.Name = "LogToolBG"
+LogToolBG.Parent = MainFrame
+LogToolBG.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+LogToolBG.BackgroundTransparency = 1.000
+LogToolBG.Position = UDim2.new(0.17459698, 0, 0.128907695, 0)
+LogToolBG.Size = UDim2.new(0, 177, 0, 36)
+LogToolBG.Image = "rbxassetid://6533134734"
+
+DragFrame.Name = "DragFrame"
+DragFrame.Parent = MainFrame
+DragFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DragFrame.BackgroundTransparency = 1.000
+DragFrame.Size = UDim2.new(0, 245, 0, 31)
+
+-- Scripts:
+
+local function UFMABNU_fake_script() -- Minimize.MinimizeScript 
+	local script = Instance.new('LocalScript', Minimize)
+
+	function leftClick()
+		script.Parent.Parent.Parent.Position = UDim2.new(0.02,-0,0.966,-0)
+	end 
+	
+	script.Parent.MouseButton1Click:Connect(leftClick)
+	
+end
+coroutine.wrap(UFMABNU_fake_script)()
+local function NLEZ_fake_script() -- Close.CloseScript 
+	local script = Instance.new('LocalScript', Close)
+
+	function leftClick()
+		script.Parent.Parent.Parent.Parent:Destroy()
+	end
+	
+	script.Parent.MouseButton1Click:Connect(leftClick)
+	
+end
+coroutine.wrap(NLEZ_fake_script)()
+local function AJBDBJC_fake_script() -- Maximize.MaximizeScript 
+	local script = Instance.new('LocalScript', Maximize)
+
+	function leftClick()
+		script.Parent.Parent.Parent.Position = UDim2.new(0.01, 0,0.181, 0)
+	end
+	
+	script.Parent.MouseButton1Click:Connect(leftClick)
+	
+end
+coroutine.wrap(AJBDBJC_fake_script)()
+local function JIPT_fake_script() -- logsbtn.Script 
+	local script = Instance.new('Script', logsbtn)
+
+	local lp = game.Players.LocalPlayer
+	local ScrollingFrame = script.Parent.Parent.LoggedAudios
+	local ScreenGui = script.Parent.Parent.Parent
+	local UIListLayout = script.Parent.Parent.LoggedAudios.UIListLayout
+	local logtool = Instance.new("Tool",lp.Backpack)
+	logtool.ToolTip = "Click On Someone's boombox to log SoundId!"
+	
+	logtool.RequiresHandle = false
+	logtool.Name = "Log Sound"
+	local mouse = lp:GetMouse()
+	
+	
+	
+	
+	
+	logtool.Activated:Connect(function() 
+		print(1)
+		local obj = mouse.Target
+	
+		if obj then
+	
+			if obj.Name == "Handle" then
+				local objs = obj:FindFirstChildOfClass("Sound")
+				local objs2 = obj.Parent:FindFirstChildOfClass("Sound")
+				if objs then
+					local CopiedAudio = Instance.new("Frame")
+					local ID = Instance.new("TextLabel")
+					local Delete = Instance.new("ImageButton")
+					local Copy = Instance.new("ImageButton")
+					local bg = Instance.new("ImageLabel")
+	
+					local id = objs.SoundId:sub(33)
+	
+					CopiedAudio.Name = "CopiedAudio"
+					CopiedAudio.Parent = game.Players.LocalPlayer.PlayerGui.AudioLogger.MainFrame.LoggedAudios
+					CopiedAudio.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					CopiedAudio.BackgroundTransparency = 1.000
+					CopiedAudio.Size = UDim2.new(0, 204, 0, 49)
+	
+					ID.Name = "ID"
+					ID.Parent = CopiedAudio
+					ID.BackgroundColor3 = Color3.fromRGB(139, 139, 139)
+					ID.BackgroundTransparency = 1.000
+					ID.BorderColor3 = Color3.fromRGB(27, 42, 53)
+					ID.Position = UDim2.new(0.472256988, 0, -0.00150345778, 0)
+					ID.Size = UDim2.new(0, 98, 0, 50)
+					ID.ZIndex = 2
+					ID.Font = Enum.Font.Arcade
+					ID.Text = id
+					ID.TextColor3 = Color3.fromRGB(139, 139, 139)
+					ID.TextScaled = true
+					ID.TextSize = 14.000
+					ID.TextWrapped = true
+	
+					Delete.Name = "Delete"
+					Delete.Parent = CopiedAudio
+					Delete.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Delete.BackgroundTransparency = 1.000
+					Delete.Position = UDim2.new(0.0474964231, 0, 0.102040812, 0)
+					Delete.Size = UDim2.new(0, 37, 0, 38)
+					Delete.ZIndex = 2
+					Delete.Image = "rbxassetid://6551631500"
+	
+					Copy.Name = "Copy"
+					Copy.Parent = CopiedAudio
+					Copy.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Copy.BackgroundTransparency = 1.000
+					Copy.Position = UDim2.new(0.259762645, 0, 0.102040812, 0)
+					Copy.Size = UDim2.new(0, 37, 0, 38)
+					Copy.ZIndex = 2
+					Copy.Image = "rbxassetid://6551631587"
+	
+					bg.Name = "bg"
+					bg.Parent = CopiedAudio
+					bg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					bg.BackgroundTransparency = 1.000
+					bg.Size = UDim2.new(0, 203, 0, 49)
+					bg.Image = "rbxassetid://6533134734"
+	
+					Copy.MouseButton1Click:Connect(function()
+	
+						pcall(function()
+							setclipboard(id)
+						end)
+	
+						pcall(function()
+							toclipboard(id)
+						end)	
+	
+					end)
+					
+					Delete.MouseButton1Click:Connect(function()
+						script.Parent.Parent.LoggedAudios.CopiedAudio:Destroy()
+					end)
+				elseif objs2 then
+	
+					local CopiedAudio = Instance.new("Frame")
+					local ID = Instance.new("TextLabel")
+					local Delete = Instance.new("ImageButton")
+					local Copy = Instance.new("ImageButton")
+					local bg = Instance.new("ImageLabel")
+	
+					local id = objs.SoundId:sub(33)
+	
+					CopiedAudio.Name = "CopiedAudio"
+					CopiedAudio.Parent = game.Players.LocalPlayer.PlayerGui.AudioLogger.MainFrame.LoggedAudios
+					CopiedAudio.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					CopiedAudio.BackgroundTransparency = 1.000
+					CopiedAudio.Size = UDim2.new(0, 204, 0, 49)
+	
+					ID.Name = "ID"
+					ID.Parent = CopiedAudio
+					ID.BackgroundColor3 = Color3.fromRGB(139, 139, 139)
+					ID.BackgroundTransparency = 1.000
+					ID.BorderColor3 = Color3.fromRGB(27, 42, 53)
+					ID.Position = UDim2.new(0.472256988, 0, -0.00150345778, 0)
+					ID.Size = UDim2.new(0, 98, 0, 50)
+					ID.ZIndex = 2
+					ID.Font = Enum.Font.Arcade
+					ID.Text = id
+					ID.TextColor3 = Color3.fromRGB(139, 139, 139)
+					ID.TextScaled = true
+					ID.TextSize = 14.000
+					ID.TextWrapped = true
+	
+					Delete.Name = "Delete"
+					Delete.Parent = CopiedAudio
+					Delete.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Delete.BackgroundTransparency = 1.000
+					Delete.Position = UDim2.new(0.0474964231, 0, 0.102040812, 0)
+					Delete.Size = UDim2.new(0, 37, 0, 38)
+					Delete.ZIndex = 2
+					Delete.Image = "rbxassetid://6551631500"
+	
+					Copy.Name = "Copy"
+					Copy.Parent = CopiedAudio
+					Copy.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Copy.BackgroundTransparency = 1.000
+					Copy.Position = UDim2.new(0.259762645, 0, 0.102040812, 0)
+					Copy.Size = UDim2.new(0, 37, 0, 38)
+					Copy.ZIndex = 2
+					Copy.Image = "rbxassetid://6551631587"
+	
+					bg.Name = "bg"
+					bg.Parent = CopiedAudio
+					bg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					bg.BackgroundTransparency = 1.000
+					bg.Size = UDim2.new(0, 203, 0, 49)
+					bg.Image = "rbxassetid://6533134734"
+	
+					Copy.MouseButton1Click:Connect(function()
+	
+						pcall(function()
+							setclipboard(id)
+						end)
+	
+						pcall(function()
+							toclipboard(id)
+						end)	
+	
+					end)
+				end
+			end
+		end
+	end)
+	
+	
+	
+end
+coroutine.wrap(JIPT_fake_script)()
+local function VAIG_fake_script() -- MainFrame.DragScript 
+	local script = Instance.new('LocalScript', MainFrame)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.DragFrame.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+	
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(VAIG_fake_script)()
